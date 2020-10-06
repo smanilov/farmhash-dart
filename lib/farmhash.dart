@@ -46,14 +46,21 @@ Int64 _hashLen0to16(List<int> s) {
     return _hashLen16(Int64(len) + (a << 3), _fetch32(s.sublist(len - 4)), mul);
   }
   if (len > 0) {
-    // TODO:
+    // TODO: write a test for, and implement, this branch
     return Int64();
   }
   return k2;
 }
 
 Int64 _hashLen17to32(List<int> s) {
-  return Int64(0); 
+  final len = s.length;
+  final mul = k2 + len * 2;
+  final a = _fetch64(s) * k1;
+  final b = _fetch64(s.sublist(8));
+  final c = _fetch64(s.sublist(len - 8)) * mul;
+  final d = _fetch64(s.sublist(len - 16)) * k2;
+  return _hashLen16(_rotate64(a + b, 43) + _rotate64(c, 30) + d,
+      a + _rotate64(b + k2, 18) + c, mul);
 }
 
 Int64 _hashLen33to64(List<int> s) {
