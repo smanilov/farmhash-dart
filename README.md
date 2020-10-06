@@ -9,4 +9,4 @@ The tests are based on the Guava tests for the Java implementation at
 https://github.com/google/guava.
 
 The file structure of the repository is based on the file structure of
-[quiver-dart][https://github.com/google/quiver-dart].
+[quiver-dart](https://github.com/google/quiver-dart).
